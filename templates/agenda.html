@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    body{
+        font-size: large;
+    }
+</style>
+<div class="container m-5  pt-3" style="border-radius:10px;" >
+    <h1 class="display-4 text-center mb-5 titles" style="color: black;">Our Agenda</h1>
+    {% for d in data %}
+    <ul>
+        <li>
+        <div class="d-flex flex-row justify-content-between align-items-center">
+            <div>
+                Date of the game : <span style="color:#c59f79">{{ d.date }}</span> (against <span style="color:#c59f79">{{ d.adversaire }}</span>)
+            </div>    
+            
+        {% if d.stats_count == 0 %}
+            <a href="{% url 'details_game' game_id=d.id %}" style="background-color: black;" class="btn">Complete</a>
+        {% endif %}
+        </div>
+        </li>
+    </ul>
+
+    {% endfor %}
+    <hr>
+    <a href="{% url 'addgame' %}" style="background-color: black;" class="btn mb-5">Add Game</a>
+</div>
+{% endblock content %}

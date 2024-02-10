@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .custom-border {
+  border: 2px solid #c59f79; 
+}
+
+</style>
+<div class="container">
+    <h1 class="mt-5 text-center mb-5 titles">Stats of <span style="color: #c59f79 ;">{{ match.date }}</span> Game</h1>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Player name</th>
+                <th>Points</th>
+                <th>Rebounds</th>
+                <th>Assists</th>
+                <th>Steals</th>
+                <th>Blocks</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stat in stats %}
+            <tr>
+                <td>{{ stat.player.prenom }} {{ stat.player.nom }}</td>
+                <td>{{ stat.points }}</td>
+                <td>{{ stat.rebounds }}</td>
+                <td>{{ stat.assists }}</td>
+                <td>{{ stat.steals }}</td>
+                <td>{{ stat.blocks }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="d-flex flex-row justify-content-around align-items-center">
+    <div><img src="{% static 'AI_art.png' %}" alt="Ma photo"></div>
+    <div><img src="{% static 'lebron_art.png' %}" alt="Ma photo"></div>
+    <div><img src="{% static 'pg_art.png' %}" alt="Ma photo"></div>  
+</div>
+{% endblock content %}

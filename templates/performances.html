@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+
+</style>
+<h1 class="mt-4 mb-4 titles text-center" style="font-size:70px;">Performances Historic</h1>
+{% if matches %}
+<div class="container d-flex flex-row justify-content-around align-items-center">
+<div style="font-size:xx-large ;">
+    
+    <ul>
+        {% for match in matches %}
+        {% if match.victoire %}
+        <li><a href="{% url 'match_stats' match.id %}">Stats of {{ match.date }} game (game won)</a></li>
+        {% else %}
+        <li><a href="{% url 'match_stats' match.id %}">Stats of {{ match.date }} game (game lost)</a></li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+    
+</div>
+<div >
+    <img src="{% static 'red_jo1.png' %}" alt="Ma photo" style=" position: relative; top: 0; left: 12%;"> 
+</div>
+</div>
+{% else %}
+<div class="d-flex flex-row justify-content-around">
+<div><h2 class="text-center" style="margin-top:180px;">There is no Stats Yet !</h2></div>
+<div><img src="{% static 'jordan_art1.png' %}" alt="Ma photo" style=" position: relative; top: 0; left: 0;"> </div>
+</div>
+
+    {% endif %}
+{% endblock content %}

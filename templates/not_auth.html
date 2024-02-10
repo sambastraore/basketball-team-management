@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static  %}
+<div class="container mt-3">
+    
+    <div class="d-flex justify-content-around align-items-center">
+        <!-- Colonne pour le texte "Vous n'êtes pas authentifié" -->
+        <div class="">
+            <div class="card" style="width:max-content; ">
+                <div class="card-body text-center">
+                    <h1 class="card-title">You are not authenticated</h1>
+                    <p class="card-text">You need to connect to get access to this page</p>
+                    <a href="{% url 'login' %}" class="btn" style="background-color:black ;">Connect</a>
+                </div>
+            </div>
+        </div>
+        <!-- Colonne pour la photo -->
+        <div class="d-none d-md-block">
+            <img src="{% static 'not_auth1.png' %}" class="img-fluid" alt="Photo" style="position:relative; left:5%">
+        </div>
+    </div>
+</div>
+{% endblock content %}

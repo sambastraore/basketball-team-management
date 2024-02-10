@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  button[type="submit"] {
+            background-color: black;
+            color: #c59f79;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left:50%;
+        }
+</style>
+<div class="container" style="margin-bottom: 100px;">
+    <form action="" method="post" class="mt-4">
+        {% csrf_token %}
+        <div class="card mb-4" style="margin-left:36%;">
+            <div class="card-header">
+                <h4 class="card-title">Opponent: {{ game.adversaire }}</h3>
+                <h4 class="card-title">Date: {{ game.date }}</h4>
+            </div>
+            <div class="card-body">
+                {{ form_game.as_p }}
+            </div>
+        </div>
+
+        {{ formset_stats.management_form }}
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Player Name</th>
+                    <th>Points Scored</th>
+                    <th>Assists</th>
+                    <th>Rebounds</th>
+                    <th>Steals</th>
+                    <th>Blocks</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for form in formset_stats %}
+                <tr>
+                    <td>{{ form.player }}</td>
+                    <td>{{ form.points }}</td>
+                    <td>{{ form.assists }}</td>
+                    <td>{{ form.rebounds }}</td>
+                    <td>{{ form.steals }}</td>
+                    <td>{{ form.blocks }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <button type="submit" class="btn btn-success">Save</button>
+    </form>
+</div>
+{% endblock content %}

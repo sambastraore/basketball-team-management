@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    body{
+        background-image: url("{% static 'background_cube.jpg' %}"); 
+        background-size: cover;
+        background-repeat: no-repeat;
+        
+    }
+   
+</style>
+<div class="container d-flex flex-row justify-content-between align-items-center">
+    <div style="margin-top:30px; margin-bottom:50px;">
+        <h2 style="margin-bottom:10% ; font-size: 60px; font-weight: 900;">A LOOK INTO THE <span style="color:#c59f79 ;">#48</span> BASKETBALL TEAM</h2>
+        <p style="font-size:40px; font-family: 'Dancing Script', cursive; border: 10px  #c59f79; padding: 2%;border-left:5px solid black;"><span style="color:#c59f79;">"I've failed over and over and over <br>again in my life. That's why I succeed."</span><br>-Michael Jordan</p>
+        <a href="/players" class="btn d-none d-md-block" style="background-color:black ; border-radius: 10px; margin-top: 8%; margin-bottom: 8%; width: 50%; font-size: 40px; margin-left: 25%;">See the players</a>
+    </div>
+    <div style="width:80% ;" class="d-none d-md-block">
+        <img src="{% static 'base_accueil1.png' %}" alt="Ma photo" style="width: 110%; height: 150%; position: relative; top: 0; left: 12%;"> 
+    </div>
+</div>
+{% endblock content %}

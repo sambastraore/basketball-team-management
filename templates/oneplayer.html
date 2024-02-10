@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+body{
+        background-image: url("{% static 'cube1.jpg' %}"); 
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .container-fluid {
+        padding: 30px;
+        border-radius: 10px;
+        margin-top:90px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        padding-left:10%;
+        padding-right:10%;
+    }
+
+    .col-lg-6 h1 {
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+
+    .col-lg-6 p {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+</style>
+<div class="container-fluid">
+    <div class="d-flex flex-row align-items-center justify-content-around mt-5">
+        <div class="col-lg-6 mb-5">
+            <img src="{{ player.image.url }}" alt="{{ player.prenom }} {{ player.nom }}" style="width:40%;height:40%; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);">
+        </div>
+        <div class="col-lg-6 mb-5">
+            <h1 style="color: #c59f79; font-weight: bold;">{{ player.prenom }} {{ player.nom }}</h1>
+            <p style="font-size:xx-large; color: #333;"><span style="color:#c59f79;">Age</span>: {{ player.age }}</p>
+            <p style="font-size:xx-large; color: #333;"><span style="color:#c59f79;">Position</span>: {{ player.poste }}</p>
+            <p style="font-size:xx-large; color: #333;"><span style="color:#c59f79;">Description</span>: {{ player.description }}</p>
+            
+        </div>
+    </div>
+</div>
+{% endblock content %}

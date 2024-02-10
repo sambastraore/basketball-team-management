@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    /* Style personnalisé pour la page de login */
+    
+    .login-container {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        
+    }
+  /*  .login-image {
+        max-width: 200px;
+        float: right;
+        margin-left: 20px;
+        
+    }*/
+</style>
+<div>
+    <h1 class="titles text-center mt-4" style="font-size:70px ;">Authentication</h1>
+</div>
+<div class="container mt-5 d-flex flew-row justify-content-center align-items-center">
+    <div class="row align-items-center">
+        <div class="col-md-6 login-container">
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username:</label>
+                    <input type="text" id="username" name="username" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password:</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <input type="submit" value="Login" class="btn" style="background-color:black; color:#c59f79">
+                </div>
+            </form>
+            {% if error_message %}
+                <p class="text-danger">{{ error_message }}</p>
+            {% endif %}
+        </div>
+        <div class="col-md-6">
+            <img src="{% static 'kobe_art1.png' %}" class="img-fluid login-image" alt="Photo">
+        </div>
+    </div>
+</div>
+{% endblock content %}

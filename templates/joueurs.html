@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    body{
+        background-image: url("{% static 'wooden_court.jpg' %}"); 
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .card {
+        transition: transform 0.3s ease;
+        border-radius: 10px;
+        border: 0.5px solid #c59f79;
+        transition: box-shadow 0.4s ease;
+        margin-bottom: 15px; /* Ajout d'une marge en bas pour l'espacement entre les cards */
+    }
+
+    .card:hover {
+        box-shadow: 0 0 10px #c59f79;
+    }
+</style>
+<div class="container mt-5 mb-5">
+    <h1 class="display-4 text-center titles mb-5" style="color: black;">Our Players</h1>
+    <div class="row">
+        {% for player in players %}
+        <div class="col-md-4"> <!-- Chaque card occupera 4 colonnes sur les écrans de taille moyenne -->
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-center"><span style="color:#c59f79 ;">{{ player.prenom }} {{ player.nom }}</span></h2>
+                    <a href="{% url 'player_details' player_id=player.id %}" class="btn d-block mx-auto mt-3" style="background-color:black ;">See details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
